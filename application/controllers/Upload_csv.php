@@ -25,7 +25,7 @@ class Upload_csv extends CI_Controller {
                                         
 	 
         function validate(){
-            echo 'INITIAL SETUPS FOR CSV UPLOAD<br> 01. REQUIRED TO SET SUPPLIER ID <br>02. REQUIRED TO SET LOCATION ID';die;
+//            echo 'INITIAL SETUPS FOR CSV UPLOAD<br> 01. REQUIRED TO SET SUPPLIER ID <br>02. REQUIRED TO SET LOCATION ID';die;
             $file = $_FILES["file"]["tmp_name"];
             $file_open = fopen($file, "r");
 
@@ -54,13 +54,13 @@ class Upload_csv extends CI_Controller {
                                     'added_by' => $this->session->userdata(SYSTEM_CODE)['ID'],
                                 ); 
             $insert_stat = $this->Items_CSV_model->add_db_purch_invoice($sdata);
-            $insert_stat = true;
+//            $insert_stat = true;
             
             $i=0;
 //            if(true){
             if($insert_stat){
                 $total=0;
-                while (($csv = fgetcsv($file_open, 1000, ",")) !== false) {
+                while (($csv = fgetcsv($file_open, 1000, ",")) !== false && $csv[0]!='') {
                         if($i!=0){
                             $item_code = $csv[0];
                             $item_desc = $csv[1];
@@ -74,6 +74,14 @@ class Upload_csv extends CI_Controller {
                             $uom_id_2= $csv[9];
                             $sales_excluded= $csv[11];
                             $purchase_exclude= $csv[12];
+                            
+                            //GEMS 
+                            $color = $csv[13];
+                            $certfication = $csv[14];
+                            $cert_no = $csv[15];
+                            $origin = $csv[16];
+                            $treatment = $csv[17];
+                            $shape = $csv[18];
 
                             $item_id = get_autoincrement_no(ITEMS); 
                 //            $item_code = gen_id('1', ITEMS, 'id',4);
@@ -85,9 +93,11 @@ class Upload_csv extends CI_Controller {
                             if(!is_dir(ITEM_IMAGES.$item_id.'/')) mkdir(ITEM_IMAGES.$item_id.'/', 0777, TRUE); 
                             if(!is_dir(ITEM_IMAGES.$item_id.'/other/')) mkdir(ITEM_IMAGES.$item_id.'/other/', 0777, TRUE);
 
-                            $dir_path = "E:/My Study/Project/PROJECTS NVELOOP/NVELOOP/JWL_POS/CSV_UPLOAD/product_list/".$item_code;
+//                            $dir_path = "E:/xampp_zv/htdocs/nveloop_gems/storage/images/categories/".$cat_id;
+                            $dir_path = "E:/My Study/Project11/PROJECTS NVELOOP/NVELOOP/JWL_POS/CSV_UPLOAD/product_list/".$item_code;
                             $file_in = $all_images = array();
-                            $file_in = scandir($dir_path,1);
+                            if(is_dir($dir_path))
+                                $file_in = scandir($dir_path,1);
 
                             $first_img = '';
                             foreach ($file_in as $key => $img){
@@ -121,6 +131,14 @@ class Upload_csv extends CI_Controller {
                                                     'added_on' => date('Y-m-d'),
                                                     'added_by' => $this->session->userdata(SYSTEM_CODE)['ID'],
                                                 );
+                            
+                            if($color!='' && isset($color)){$data['item']['color'] = $color;}
+                            if($certfication!='' && isset($certfication)){$data['item']['certification'] = $certfication;}
+                            if($cert_no!='' && isset($cert_no)){$data['item']['certification_no'] = $cert_no;}
+                            if($treatment!='' && isset($treatment)){$data['item']['treatment'] = $treatment;}
+                            if($shape!='' && isset($shape)){$data['item']['shape'] = $shape;}
+                            if($origin!='' && isset($origin)){$data['item']['origin'] = $origin;}
+                            
 
                                 $supplier_inv_desc_id = get_autoincrement_no(SUPPLIER_INVOICE_DESC);
                                 $data['supplier_inv_desc'] = array(
@@ -200,7 +218,7 @@ class Upload_csv extends CI_Controller {
                 //            if(!empty($def_image)) $data['image'] = $def_image[0]['name'];
         //                                            echo '<pre>';                                print_r($data); die;
 
-                            $add_stat = $this->Items_CSV_model->add_db_item($data);
+                            $add_stat = $this->Items_CSV_model->add_db_item($data); 
                             if($add_stat[0]){
                                 echo $csv[0].' Added Successfully <br>';
                             }else{
@@ -239,7 +257,7 @@ class Upload_csv extends CI_Controller {
                                         'status' => 1,
                                 )
                             );
-                
+            
                             $add_stat = $this->Items_CSV_model->add_db_gl($data_1);
                             if($add_stat[0]){
                                 echo '<br><br>...........................................<br> GL ENTRY UPDATED SUCCESFULLY<br>';

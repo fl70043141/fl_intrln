@@ -100,6 +100,7 @@ class Sales_summary extends CI_Controller {
             $i=1;
             $g_tot_settled = $g_inv_total = $g_tot_balance=0;
             foreach ($invoices['rep_data'] as $cust_dets){
+                if(isset($cust_dets['invoices']) && count($cust_dets['invoices'])>0){
 //            echo '<pre>';            print_r($cust_dets); die;
             $html .= '<table  class="table-line" border="0">
                         <thead>
@@ -141,22 +142,22 @@ class Sales_summary extends CI_Controller {
                                                 $cust_payments = (!empty($invoice['transections']))?$invoice['transections'][0]['total_amount']:0;
                                                 $pending = $invoice_total-$cust_payments;
 
-                                                $inv_total += $invoice_total;
-                                                $tot_settled += $cust_payments;
-                                                $tot_balance += $pending;
+                                                $inv_total += $invoice_total/$invoice['currency_value'];
+                                                $tot_settled += $cust_payments/$invoice['currency_value'];
+                                                $tot_balance += $pending/$invoice['currency_value'];
 
-                                                $g_inv_total += $invoice_total;
-                                                $g_tot_settled += $cust_payments;
-                                                $g_tot_balance += $pending;
+                                                $g_inv_total += $invoice_total/$invoice['currency_value'];
+                                                $g_tot_settled += $cust_payments/$invoice['currency_value'];
+                                                $g_tot_balance += $pending/$invoice['currency_value'];
  
 
                                                 $html .= '<tr>
                                                             <td width="20%" align="center">'.$invoice['invoice_no'].'</td>
                                                             <td width="15%" align="center">'.date(SYS_DATE_FORMAT,$invoice['invoice_date']).'</td>
-                                                            <td width="17%" align="right">'.number_format($invoice_total,2).'</td>
-                                                            <td width="17%" align="right">'.number_format($cust_payments,2).'</td>
+                                                            <td width="17%" align="right">'.number_format($invoice_total/$invoice['currency_value'],2).'</td>
+                                                            <td width="17%" align="right">'.number_format($cust_payments/$invoice['currency_value'],2).'</td>
                                                             <td width="14%" align="center">'. date(SYS_DATE_FORMAT,$due_date).'</td>
-                                                            <td width="17%" align="right">'.number_format($pending,2).'</td>
+                                                            <td width="17%" align="right">'.number_format($pending/$invoice['currency_value'],2).'</td>
                                                         </tr>';
                                             }
                                         }
@@ -176,6 +177,7 @@ class Sales_summary extends CI_Controller {
                     </table> 
                 ';               
                 $i++;
+            }
             }
             $html .= '
                     <table>

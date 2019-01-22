@@ -23,13 +23,13 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 | of this setting
 |
 */
-define('SYSTEM_NAME', 'JWL POS');
-define('SYSTEM_CODE', 'NV_POS_JWL_1');
-define('SYSTEM_SHOTR_NAME', 'NV JWL');
+define('SYSTEM_NAME', 'GEM MERCHANT');
+define('SYSTEM_CODE', 'NV_GEMS_1');
+define('SYSTEM_SHOTR_NAME', 'NV GEMS');
 define('SYSTEM_POWERED_BY', 'Nveloop Solution');
 define('SYS_DATE_FORMAT', 'm/d/Y');
 define('NO_GEM', '0'); //jewelry only ->1
-define('SYS_EXP', '2018-12-31 23:58'); //jewelry only ->1
+define('SYS_EXP', '2019-06-30 23:58'); //jewelry only ->1
 
 define('INVOICE_NO_PREFIX', 'NI'. date('my'));
 define('TEMP_INVOICE_NO_PREFIX', 'TMP');
@@ -41,7 +41,9 @@ define('CS_NO_PREFIX', 'CS'. date('my')); //consignee Submission
 define('CR_NO_PREFIX', 'CR'. date('my')); // Consignee Received
 define('OG_NO_PREFIX', 'OG'. date('my')); // Consignee Received
 define('CRF_SUB_NO_PREFIX', 'CMS'. date('my')); // Xragtman Submission No
-define('CRF_REC_NO_PREFIX', 'CMR'. date('my')); // Xragtman Submission No
+define('CRF_REC_NO_PREFIX', 'CMR'. date('my')); // Xragtman Receive No
+define('GM_ISSUE_PREFIX', 'GI'. date('my')); // Gem Issue No 
+define('GM_RECEIVE_PREFIX', 'GR'. date('my')); // Gem Issue No 
 
 
 /*
@@ -136,7 +138,7 @@ define('INV_LOCATION',                  TB_PREFIX.'inventory_location');
 define('INVOICES',                      TB_PREFIX.'invoices');
 define('INVOICE_TYPE',                  TB_PREFIX.'invoice_type');
 define('INVOICES_TEMP',                 TB_PREFIX.'invoice_temp');
-define('INVOICES_ADDONS',                 TB_PREFIX.'invoice_addons');
+define('INVOICES_ADDONS',               TB_PREFIX.'invoice_addons');
 define('SUPPLIER_INVOICE',              TB_PREFIX.'supplier_invoice');
 define('SUPPLIER_INVOICE_DESC',         TB_PREFIX.'supplier_invoice_description');
 define('SALES_ORDERS',                  TB_PREFIX.'sales_orders');
@@ -162,7 +164,7 @@ define('GL_CHART_CLASS',                TB_PREFIX.'gl_chart_classes');
 define('GL_CHART_MASTER',               TB_PREFIX.'gl_chart_master');
 define('GL_CHART_TYPE',                 TB_PREFIX.'gl_chart_types');
 define('GL_TRANS',                      TB_PREFIX.'gl_transections');
-define('GL_QUICK_ENTRY',            TB_PREFIX.'gl_quick_entries');
+define('GL_QUICK_ENTRY',                TB_PREFIX.'gl_quick_entries');
 define('GL_QUICK_ENTRY_ACC',            TB_PREFIX.'gl_quick_entry_accounts');
 define('GL_FISCAL_YEARS',               TB_PREFIX.'gl_fiscal_year');
 define('OLD_GOLD',                      TB_PREFIX.'old_gold');
@@ -172,6 +174,11 @@ define('CRAFTMANS',                     TB_PREFIX.'craftmans');
 define('CRAFTMANS_SUBMISSION',          TB_PREFIX.'so_craftman_submission');
 define('CRAFTMANS_RECEIVE',             TB_PREFIX.'so_craftman_receivals');
 define('CRAFTMANS_RECEIVE_DESC',        TB_PREFIX.'so_craftman_receivals_desc');
+define('GEM_ISSUES',                    TB_PREFIX.'gem_issues');
+define('GEM_ISSUE_TYPES',               TB_PREFIX.'gem_issue_types');
+define('GEM_ISSUE_RECORDS',             TB_PREFIX.'gem_issue_item_record');
+define('GEM_RECEIVAL',                  TB_PREFIX.'gem_receivals');
+define('GEM_LAPIDARY_COSTING',             TB_PREFIX.'gem_lapidary_costing');
 
 
 /*
@@ -237,8 +244,8 @@ defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
 define('ADMIN_EMAIL','fahrylafir@gmail.com');
 
 /******** Temp config for gmail config **/
-define('SMTP_USER','fahrycc@gmail.com');
-define('SMTP_PWD','a715889595A');
+define('SMTP_USER','nveloopmailer@gmail.com');
+define('SMTP_PWD','nvtest@123');
 define('SMTP_HOST','ssl://smtp.gmail.com');
 define('SMTP_PORT','465');
 

@@ -220,9 +220,11 @@ class DropDownList extends CI_Controller {
                 return false;
             }
         }
-        function get_dropdown_formodal($table='',$name='dropdown_value',$id="id"){ 
-            $name_id = $this->input->post('dd_name_id');
-             echo json_encode(get_dropdown_data(DROPDOWN_LIST, $name, $id,'','dropdown_id = '.$name_id)); 
+        function get_dropdown_formodal($table='',$name='dropdown_value',$id="id",$first_null_option=''){ 
+            $input = $this->input->post();
+            $name_id = $input['dd_name_id'];
+            $first_null_option = (isset($input['first_null_option']))?$input['first_null_option']:$first_null_option;
+             echo json_encode(get_dropdown_data(DROPDOWN_LIST, $name, $id,$first_null_option,'dropdown_id = '.$name_id)); 
         }
         function add_dropdown_quick($data1){
             unset($data1['function_name']);

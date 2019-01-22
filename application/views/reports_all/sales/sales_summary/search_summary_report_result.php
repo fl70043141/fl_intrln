@@ -3,7 +3,7 @@
               <?php
                    foreach ($rep_data as $cust_id => $search){ 
 //                       echo '<pre>';                       print_r($search); die;
-                       
+                       if(isset($search['invoices']) && count($search['invoices'])>0){
                         echo '<tr>
                                 <td><b>'.$search['customer']['customer_name'].'</b></td> 
                             </tr>
@@ -49,10 +49,10 @@
                                         <td>'.($i+1).'</td> 
                                         <td align="center">'.$invoice['invoice_no'].'</td>
                                         <td align="center">'.(($invoice['invoice_date']>0)?date('d M Y',$invoice['invoice_date']):'').'</td>
-                                        <td align="right">'. number_format($invoice_total,2).'</td> 
-                                        <td align="right">'. number_format($cust_payments,2).'</td> 
+                                        <td align="right">'. number_format($invoice_total/$invoice['currency_value'],2).'</td> 
+                                        <td align="right">'. number_format($cust_payments/$invoice['currency_value'],2).'</td> 
                                         <td align="center">'.date('d M Y',$due_date).'</td> 
-                                        <td align="right">'. number_format($pending,2).'</td> 
+                                        <td align="right">'. number_format($pending/$invoice['currency_value'],2).'</td> 
                                     </tr>';
                                 $i++;
                             }
@@ -65,6 +65,7 @@
                             
                             </table>
                             ';
+                    }
                    }
               ?>   
         </tbody> 
