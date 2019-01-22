@@ -88,7 +88,7 @@ class UserPermission extends CI_Controller {
             echo 'okoo';
         }
         function make_fresh_system(){
-             echo 'WARNING: PLS HIDE THIS COMMENT BEFORE EXECUTE'; die;
+//             echo 'WARNING: PLS HIDE THIS COMMENT BEFORE EXECUTE'; die;
             $truncate_tables = array(
                                         CONSIGNEES,
                                         CONSIGNEE_COMMISH,

@@ -24,7 +24,7 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 |
 */
 define('SYSTEM_NAME', 'InterLine Gems');
-define('SYSTEM_CODE', 'NV_GEMS_1');
+define('SYSTEM_CODE', 'NV_C_INTERLINE_1');
 define('SYSTEM_SHOTR_NAME', 'IL GEMS');
 define('SYSTEM_POWERED_BY', 'Nveloop Solution');
 define('SYS_DATE_FORMAT', 'm/d/Y');
