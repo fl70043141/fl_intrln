@@ -138,9 +138,4 @@ $(document).ready(function(){
           </div>
        
      </div>
-</div> <script>
-    $(document).ready(function() {
-   
-  $(".dataTable").DataTable({"scrollX": true});
-} );
-</script>
+</div> 
