@@ -88,9 +88,9 @@ class UserPermission extends CI_Controller {
             echo 'okoo';
         }
         function make_fresh_system(){
-            // echo 'WARNING: PLS HIDE THIS COMMENT BEFORE EXECUTE'; die;
+             echo 'WARNING: PLS HIDE THIS COMMENT BEFORE EXECUTE'; die;
             $truncate_tables = array(
-//                                        CONSIGNEES,
+                                        CONSIGNEES,
                                         CONSIGNEE_COMMISH,
                                         CONSIGNEE_RECIEVE,
                                         CONSIGNEE_RECIEVE_DESC,
@@ -98,12 +98,12 @@ class UserPermission extends CI_Controller {
                                         CONSIGNEE_SUBMISSION_DESC,
                                         CREDIT_NOTES,
                                         CREDIT_NOTES_DESC,
-//                                        CUSTOMERS,
+                                        CUSTOMERS,
                                         CUSTOMER_BRANCHES,
 //                                        CUSTOMER_TYPE,
                                         GL_QUICK_ENTRY,
                                         GL_TRANS,
-//                                        INV_LOCATION,
+                                        INV_LOCATION,
                                         LOCATION_TRASNFER,
                                         LOCATION_TRASNFER_DESC,
                                         INVOICES,
@@ -111,7 +111,7 @@ class UserPermission extends CI_Controller {
                                         INVOICES_ADDONS,
                                         INVOICES_TEMP,
                                         ITEMS,
-//                                        ITEM_CAT,
+                                        ITEM_CAT,
                                         ITEM_PRICES,
                                         ITEM_STOCK,
                                         ITEM_STOCK_TRANS,
@@ -126,13 +126,17 @@ class UserPermission extends CI_Controller {
                                         CRAFTMANS_RECEIVE,
                                         CRAFTMANS_RECEIVE_DESC,
                                         CRAFTMANS_SUBMISSION,
-//                                        SUPPLIERS,
+                                        SUPPLIERS,
                                         SUPPLIER_INVOICE,
                                         SUPPLIER_INVOICE_DESC,
                                         SYSTEM_LOG,
                                         SYSTEM_LOG_DETAIL,
                                         TRANSECTION,
                                         TRANSECTION_REF,
+                                        GEM_ISSUES,
+                                        GEM_ISSUE_RECORDS,
+                                        GEM_RECEIVAL,
+                                        GEM_LAPIDARY_COSTING
                                     );
             foreach ($truncate_tables as $tbl_name){ 
                 $this->User_permission->make_fresh_system($tbl_name);

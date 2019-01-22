@@ -23,13 +23,13 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 | of this setting
 |
 */
-define('SYSTEM_NAME', 'GEM MERCHANT');
+define('SYSTEM_NAME', 'InterLine Gems');
 define('SYSTEM_CODE', 'NV_GEMS_1');
-define('SYSTEM_SHOTR_NAME', 'NV GEMS');
+define('SYSTEM_SHOTR_NAME', 'IL GEMS');
 define('SYSTEM_POWERED_BY', 'Nveloop Solution');
 define('SYS_DATE_FORMAT', 'm/d/Y');
 define('NO_GEM', '0'); //jewelry only ->1
-define('SYS_EXP', '2019-06-30 23:58'); //jewelry only ->1
+define('SYS_EXP', '2020-06-30 23:58'); //jewelry only ->1
 
 define('INVOICE_NO_PREFIX', 'NI'. date('my'));
 define('TEMP_INVOICE_NO_PREFIX', 'TMP');
@@ -55,7 +55,7 @@ define('GM_RECEIVE_PREFIX', 'GR'. date('my')); // Gem Issue No
 |
  */
 //  1--> enabed; 0-->disabled 
-define('SYSTEM_LOG_ENABLE', 0);
+define('SYSTEM_LOG_ENABLE', 1);
 define('SELECT2_ROWS_LOAD', 25);
 
 /*
